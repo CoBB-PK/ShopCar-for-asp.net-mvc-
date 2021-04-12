@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+<ul class="nav navbar-nav navbar-right">
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="LoingIn" asp-action="Report">  訂 單 報 表 | </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="List">  購 物 車 | </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="LoingIn" asp-action="Logout"> 登 出 </a>
+    </li>
+</ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="LoingIn" asp-action="Registered"> 註 冊 </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="LoingIn" asp-action="Loingin"> 登 入 </a>
+    </ul>
+}
+
+
+
+
+
+

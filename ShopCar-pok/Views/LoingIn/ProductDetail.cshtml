@@ -1,0 +1,131 @@
+﻿@model ShopCar_pok.Models.SalesOrderHeader
+
+@{
+    ViewData["Title"] = "ProductDeatils";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ProductDeatils</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                產品編號
+            </td>
+            <td>
+                數量
+            </td>
+            <td>
+                單價
+            </td>
+            <td>
+                總價
+            </td>
+            <td>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.SalesOrderDetails)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(d => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(d => item.OrderQty)
+            </td>
+            <td>
+                $
+                @Html.DisplayFor(d => item.UnitPrice)
+            </td>
+            <td>
+                $
+                @Html.DisplayFor(d => item.LineTotal)
+            </td>
+            <td>
+                @Html.ActionLink(" 編 輯 ", "ProductDetailEdit", new { id = item.SalesOrderDetailId }) |
+                @Html.ActionLink(" 刪 除 ", "ProductDelete", new { id = item.SalesOrderDetailId })
+            </td>
+            @*<td>
+            <form asp-controller="LoingDB" asp-action="ProductDetailEdit" method="post">
+                <input type="submit" value="修改" class="btn btn btn-danger" >
+            </form>
+        </td>*@
+
+        </tr>   
+         }
+    </tbody>
+</table>
+
+@*
+<div>
+    <h4>SalesOrderHeader</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrderId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrderId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SalesOrderNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrderNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PurchaseOrderNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PurchaseOrderNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ShipMethod)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ShipMethod)
+        </dd>
+        <dt class="col-sm-2">
+            ***************************************<br />
+            自己動手修改（導覽屬性）<br />
+            ***************************************<br />
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SalesOrderDetails)
+
+
+          
+            @foreach (var item in Model.SalesOrderDetails)
+            {
+                
+                @: <hr />產品編號
+                @Html.DisplayFor(d => item.ProductId) <br />
+
+                @Html.ActionLink("Details（產品明細）", "DetailsPicture", "Shop", new { id = item.ProductId }) <br />
+
+                @: <br />訂購數量
+                @Html.DisplayFor(d => item.OrderQty) <br />
+            }
+
+
+        </dd>
+
+    </dl>
+</div>
+*@
+

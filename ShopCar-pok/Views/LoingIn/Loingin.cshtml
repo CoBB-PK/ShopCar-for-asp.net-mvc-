@@ -1,0 +1,42 @@
+﻿@model ShopCar_pok.Models.Customer
+
+@{
+    ViewData["Title"] = "Loingin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Loingin</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Loingin">
+            @**@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordHash" class="control-label"></label>
+                <input  asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <h6 class="alert alert-danger">@ViewData["ErrorMessage"]</h6>
+            }
+            <div class="form-group" align="center">
+                <input type="submit" value="submit" class="btn btn-primary" />
+                <a asp-controller="LoingIn" asp-action="Registered" class="btn btn-primary">Registered</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

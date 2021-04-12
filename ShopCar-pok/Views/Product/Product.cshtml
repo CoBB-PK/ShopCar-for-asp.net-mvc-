@@ -1,0 +1,86 @@
+﻿@model IEnumerable<ShopCar_pok.Models.Product>
+
+@{
+    ViewData["Title"] = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product</h1>
+
+
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Find Product Name: @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </p>
+    }
+    <div class="row" news-v1>
+
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-sm-6 md-margin-bottom-40 card_padding">
+                <div class="course_card" align="middle">
+                    <div class="course_Top">
+                        @Html.DisplayName("-------------------------------------")
+                    </div>
+                    @if (item.ThumbNailPhoto != null)
+                    {
+                        <div class="photo-display" align="middle">
+                            <img src="@Url.Action("GetImage","WebAPI",new{ id=item.ProductId })" />
+
+                            @*@Html.DisplayFor(modelItem => item.ProductId)*@
+                        </div>
+                    }
+                    <div class="course_total" align="middle">
+                        @Html.DisplayName("Name : ")
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </div>
+                    <div class="course_teacher" align="middle">
+                        @Html.DisplayName("Color : ")
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </div>
+                    <div class="course_bottom" align="middle">
+                        @Html.DisplayName("Price : $")
+                        @Html.DisplayFor(modelItem => item.ListPrice)
+                    </div>
+                    @*<a asp-controller="Product" asp-action="Details"  class="btn btn-primary">Registered</a>*@
+                    @*
+                        ------------------------- ActionLink 與 Button ------------------------------------
+                        ActionLink
+                        1.ActionLink可以幫助產生一個連結到到指定的action基本
+                            @Html.ActionLink("詳情","detail")
+                        2.跨controller可以這樣寫
+                            @Html.ActionLink("詳情","detail","Student")
+                        3.如果還想帶值過去action,
+                            @Html.ActionLink("詳情","detail","Student",new{id=item.id})
+                        4.如果還想加上一些htmlAttributes,可以這樣寫~
+                            @Html.ActionLink("刪除","Index",new{id=item.id},new {@class="btn btn-default"})
+                        Button
+                        @using(@Html.BeginForm("Delete","Student",FormMethod.Post)){
+                            @hidden("id",item.id)
+                            <input type="submit" value="刪除" class="btn btn-default"/>
+                        }
+                        用form的方式指定action,以及設定method為Post
+                        把要帶入的值用hidden的方式帶過去~
+                        https://ithelp.ithome.com.tw/articles/10188851
+                    *@
+
+                    @*
+                        @using (Html.BeginForm("Details", "Product")) {
+                            @Html.Hidden("id", item.ProductId)
+                            <input type="submit" value="Details" class="btn btn-default">
+                        }*@
+                    @Html.ActionLink("Details Go->", "Details", new { id = item.ProductId }, new { @class = "btn btn-info" })
+                    <div class="course_bottom">
+                        @Html.DisplayName("-------------------------------------")
+                    </div>
+
+                </div>
+            </div>
+        }
+        @*@Html.Raw(ViewBag.PageList)*@
+    </div>
+</div>

@@ -1,0 +1,119 @@
+﻿@model ShopCar_pok.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-10">
+            @if (Model.ThumbNailPhoto != null)
+            {
+                
+                <img width="200" src="@Url.Action("GetImage","WebAPI",new{ id=Model.ProductId })" />
+                
+            }
+        </dt>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductId)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductNumber)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductNumber)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.StandardCost)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.StandardCost)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ListPrice)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ListPrice)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductCategoryId)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductCategoryId)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductModelId)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ProductModelId)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SellStartDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.SellStartDate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SellEndDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.SellEndDate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.DiscontinuedDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.DiscontinuedDate)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Rowguid)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Rowguid)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ModifiedDate)
+        </dd>
+    </dl>
+
+    <div>
+        @Html.ActionLink(" 加 入 購 物 車 ", "Creat", "LoingIn", new { /* id = Model.PrimaryKey */ }, new { @class = "btn btn-info" })
+        <span/>
+        <a asp-action="List" class="btn btn-warning"><b> 返 回 列 表 </b></a>
+    </div>
+</div>
+
